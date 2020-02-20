@@ -18,5 +18,6 @@ namespace Hero_Vs_Villan.Models
             Power = power;
             Impact = impact;
         }
+        
     }
 }
