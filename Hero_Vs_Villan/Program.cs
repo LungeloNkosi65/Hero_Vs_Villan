@@ -15,8 +15,8 @@ namespace Hero_Vs_Villan
         {
             var fight = new FightLogic();
             var addCharacter = new CharacterLogic();
-            //fight.Start();
-            addCharacter.CreateCharacter();
+            fight.Start();
+            //addCharacter.CreateCharacter();
             Console.ReadKey();
         }
     }

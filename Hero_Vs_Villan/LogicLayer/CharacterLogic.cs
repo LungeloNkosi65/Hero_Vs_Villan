@@ -13,7 +13,7 @@ namespace Hero_Vs_Villan.LogicLayer
         private int input1;
         private SuperHero superHero;
         private Vilan vilan;
-        private SuperPowrLogic powrLogic;
+        private SuperPower superPower;
         public static List<Character> characters { get; set; }
 
         public CharacterLogic()
@@ -22,7 +22,7 @@ namespace Hero_Vs_Villan.LogicLayer
             characters = new List<Character>();
             superHero = new SuperHero();
             vilan = new Vilan();
-            powrLogic = new SuperPowrLogic();
+            superPower = new SuperPower();
         }
 
         public void AddCharacter(Character character)
@@ -73,8 +73,16 @@ namespace Hero_Vs_Villan.LogicLayer
                 }
             }
 
-            Console.WriteLine("Eneter super power rarting from between 1 and 100");
+            Console.WriteLine("Eneter 1 to add super power and 2 to finish");
             input = Console.ReadLine();
+            input1 = ValidationLogic.ConvertValue(input);
+            while (input1 != 2)
+            {
+                character.SuperPowers.Add(SuperPowrLogic.AcceptPowers());
+                input1 = ValidationLogic.ConvertValue(Console.ReadLine());
+                
+            }
+
             if (ValidationLogic.CheckDegit(input))
             {
                 input1 = ValidationLogic.ConvertValue(input);
@@ -84,8 +92,9 @@ namespace Hero_Vs_Villan.LogicLayer
                 }
             }
             Console.WriteLine($"\n Character created.....\n Overall Power : {character.CalcImpact()} \n Attack Power : {character.CalcImpact()}" +
-                $"\n Defence Power : {character.Defend()}");
-            character.TotalImpact = superHero.CalcImpact();
+                $"\n Defence Power : {character.Defend()} \n  Super Powers :");
+            character.DisplayPowers();
+            character.TotalImpact = character.CalcImpact();
             characters.Add(character);
         }
         public void CreateCharacter()

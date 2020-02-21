@@ -9,7 +9,7 @@ namespace Hero_Vs_Villan.Models
     public class Vilan:Character
     {
         public Vilan() { }
-        public Vilan(int id,string name, int health, int ability, int strenght, int superPower, double totalImpact) : base(id,name, health, ability, strenght, superPower, totalImpact)
+        public Vilan(int id,string name, int health, int ability, int strenght, double totalImpact, List<SuperPower> superPowers) : base(id,name, health, ability, strenght, totalImpact,superPowers)
         { }
         public override double Attack()
         {

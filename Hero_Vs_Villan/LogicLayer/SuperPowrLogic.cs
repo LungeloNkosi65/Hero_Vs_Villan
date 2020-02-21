@@ -7,29 +7,41 @@ using Hero_Vs_Villan.Models;
 
 namespace Hero_Vs_Villan.LogicLayer
 {
-   public class SuperPowrLogic
+    public class SuperPowrLogic
     {
-        public static List<SuperPower> superPowers;
+       
         public SuperPowrLogic()
         {
-            superPowers = new List<SuperPower>() {
-            new SuperPower(1,"Super Kick",10),
-                new SuperPower(2,"Super Punch",20),
-                new SuperPower(3,"Khamyeya meya",100)
-            };
         }
-
-
-        public static int GetImpact(int id)
+        public static List<SuperPower> GetPowers()
         {
-            foreach (var item in superPowers)
-            {
-                if (item.Id == id)
-                {
-                    return id;
-                }
-            }
-            return 0;
+            var power = new List<SuperPower>() {
+             new SuperPower("Super Kick",10),
+             new SuperPower("Super Punch",20),
+            new SuperPower("Khamyeya meya",100)
+            };
+            return power;
         }
+
+        public static List<SuperPower> GetVilanPowers()
+        {
+            var power = new List<SuperPower>() {
+             new SuperPower("Super Kick",10),
+             new SuperPower("Super Punch",20),
+            };
+            return power;
+        }
+
+
+        public static SuperPower AcceptPowers()
+        {
+            SuperPower superPower = new SuperPower();
+            Console.WriteLine("Enter super power");
+            superPower.Power = Console.ReadLine();
+            Console.WriteLine("Enter power impact");
+            superPower.Impact = ValidationLogic.ConvertValue(Console.ReadLine());
+            return superPower;
+        }
+
     }
 }

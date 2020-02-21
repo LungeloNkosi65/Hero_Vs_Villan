@@ -9,7 +9,7 @@ namespace Hero_Vs_Villan.Models
     public class SuperHero : Character
     {
         public SuperHero() { }
-        public SuperHero(int id,string name, int health, int ability, int strenght, int superPower,double totalImpact) :base(id,name,health,ability,strenght, superPower,totalImpact)
+        public SuperHero(int id,string name, int health, int ability, int strenght,double totalImpact, List<SuperPower> superPowers) :base(id,name,health,ability,strenght,totalImpact,superPowers)
         { }
         public override double Attack()
         {
@@ -18,7 +18,11 @@ namespace Hero_Vs_Villan.Models
 
         public override double CalcImpact()
         {
-            return ((Health + Ability + Strenght + SuperPower) * 2);
+            foreach (var item in SuperPowers)
+            {
+                Ability += item.Impact;
+            }
+            return ((Health + Ability + Strenght ) * 2);
         }
 
         public override double Defend()
